@@ -1,0 +1,32 @@
+{
+	"name": "dsparameterfile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_adlsgen2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "git (1).json",
+				"fileSystem": "parameterfile"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"rel_url": {
+					"type": "string"
+				},
+				"sink_folder": {
+					"type": "string"
+				},
+				"sink_file_name": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}
