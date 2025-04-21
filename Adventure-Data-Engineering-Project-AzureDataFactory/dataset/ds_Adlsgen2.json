@@ -1,0 +1,38 @@
+{
+	"name": "ds_Adlsgen2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_adlsgen2",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sink_folder": {
+				"type": "string"
+			},
+			"sink_file_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().sink_file_name",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().sink_folder",
+					"type": "Expression"
+				},
+				"fileSystem": "bronze"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
