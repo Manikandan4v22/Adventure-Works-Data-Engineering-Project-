@@ -1,0 +1,17 @@
+{
+	"name": "calendar view",
+	"properties": {
+		"content": {
+			"query": "Create view gold.Calendar\nAS\n\nselect \n* \nfrom \nOPENROWSET(\n    BULK'https://2025adls001.dfs.core.windows.net/silver/AdventureWorks_Calendar/',\n    FORMAT='PARQUET'\n) AS QUERY1\n\n\nselect * from gold.Calendar\n\n\n\n\n\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "serverlessdatabase",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

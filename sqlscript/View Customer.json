@@ -1,0 +1,17 @@
+{
+	"name": "View Customer",
+	"properties": {
+		"content": {
+			"query": "CREATE view gold.Customer\nAS\n\nselect \n* \nfrom \nOPENROWSET(\n    BULK'https://2025adls001.blob.core.windows.net/silver/AdventureWorks_Customers/',\n    FORMAT='PARQUET'\n) AS QUERY2\n\n\nselect * from gold.Customer",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "serverlessdatabase",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

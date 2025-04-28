@@ -1,0 +1,17 @@
+{
+	"name": "View Products",
+	"properties": {
+		"content": {
+			"query": "CREATE view gold.Products\nAS\n\nselect \n* \nfrom \nOPENROWSET(\n    BULK'https://2025adls001.blob.core.windows.net/silver/AdventureWorks_Products/',\n    FORMAT='PARQUET'\n) AS QUERY4\nGO\n\nselect * from gold.Products",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "serverlessdatabase",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

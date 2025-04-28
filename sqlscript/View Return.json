@@ -1,0 +1,17 @@
+{
+	"name": "View Return",
+	"properties": {
+		"content": {
+			"query": "\n\ncreate view gold.Returns\nAS\n\nselect * from \nOPENROWSET(\n    BULK'https://2025adls001.dfs.core.windows.net/silver/AdventureWorks_Returns/',\n    FORMAT = 'parquet'\n)as query5\nGO\n\nselect * from gold.Returns\n\n\n\n\n\n\n\n\n\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "serverlessdatabase",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

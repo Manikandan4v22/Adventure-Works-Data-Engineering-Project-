@@ -1,0 +1,17 @@
+{
+	"name": "View Territories",
+	"properties": {
+		"content": {
+			"query": "create view gold.Territories\nAS\n\nselect * from \nOPENROWSET(\n    BULK'https://2025adls001.dfs.core.windows.net/silver/AdventureWorks_Territories/',\n    FORMAT = 'parquet'\n)as query9\nGO\n\nselect * from gold.Territories",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "serverlessdatabase",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
