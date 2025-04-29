@@ -1,0 +1,17 @@
+{
+	"name": "External table creation",
+	"properties": {
+		"content": {
+			"query": "-- Create a database scoped credential\nCREATE DATABASE SCOPED CREDENTIAL AppCred\nWITH \nIDENTITY = 'Managed Identity'\n---Creating External Data source\nCREATE EXTERNAL DATA SOURCE SOURCE_SILVER\nWITH\n(\n    LOCATION = 'https://2025adls001.dfs.core.windows.net/silver',\n    CREDENTIAL = AppCred\n)\n\n\nCREATE EXTERNAL FILE FORMAT file_format_name\nWITH (\n        FORMAT_TYPE = PARQUET,\n        DATA_COMPRESSION = 'org.apache.hadoop.io.compress.SnappyCodec'\n        \n     )\n\nCREATE EXTERNAL DATA SOURCE SOURCE_GOLD\nWITH\n(\n    LOCATION = 'https://2025adls001.dfs.core.windows.net/gold',\n    CREDENTIAL = AppCred\n)\n\n\nCREATE EXTERNAL TABLE gold.extsales\nWITH(\n    LOCATION = 'extsales',\n    DATA_SOURCE = SOURCE_GOLD,\n    FILE_FORMAT = file_format_name\n) as \n\nselect * from gold.Sales\n\nselect * from gold.extsales",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "serverlessdatabase",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

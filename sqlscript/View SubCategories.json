@@ -1,0 +1,17 @@
+{
+	"name": "View SubCategories",
+	"properties": {
+		"content": {
+			"query": "\nCREATE view gold.SubCategories\nAS\n\nselect \n* \nfrom \nOPENROWSET(\n    BULK'https://2025adls001.blob.core.windows.net/silver/AdventureWorks_SubCategories/',\n    FORMAT='PARQUET'\n) AS QUERY8\ngo\n\nselect * from gold.SubCategories",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "serverlessdatabase",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

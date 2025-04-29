@@ -1,0 +1,17 @@
+{
+	"name": "Create Schema",
+	"properties": {
+		"content": {
+			"query": "CREATE schema gold",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "serverlessdatabase",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

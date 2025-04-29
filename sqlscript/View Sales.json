@@ -1,0 +1,17 @@
+{
+	"name": "View Sales",
+	"properties": {
+		"content": {
+			"query": "\ncreate view gold.Sales\nAS\n\nselect * from \nOPENROWSET(\n    BULK'https://2025adls001.dfs.core.windows.net/silver/AdventureWorks_Sales/',\n    FORMAT = 'parquet'\n)as query5\nGO\n\nselect * from gold.Sales",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "serverlessdatabase",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
