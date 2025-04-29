@@ -1,0 +1,15 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "ws-synapse-0025"
+		},
+		"ws-synapse-0025-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:ws-synapse-0025.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"ws-synapse-0025-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://defaultsynapseadlsgen2.dfs.core.windows.net"
+		}
+	}
+}
