@@ -1,5 +1,5 @@
 {
-	"name": "ProductCategories",
+	"name": "View ProductCategories",
 	"properties": {
 		"content": {
 			"query": "CREATE view gold.ProductCategories\nAS\n\nselect \n* \nfrom \nOPENROWSET(\n    BULK'https://2025adls001.blob.core.windows.net/silver/AdventureWorks_ProductCategories/',\n    FORMAT='PARQUET'\n) AS QUERY3\nGO\n\nselect * from gold.Customer",
