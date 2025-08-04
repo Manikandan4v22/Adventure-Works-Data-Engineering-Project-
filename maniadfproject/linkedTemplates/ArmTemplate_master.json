@@ -1,0 +1,154 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "maniadfproject"
+		},
+		"FileServer1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'FileServer1'"
+		},
+		"LS_Sqldb_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_Sqldb'"
+		},
+		"Ls_gen2_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Ls_gen2'"
+		},
+		"ls_datalake_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_datalake'"
+		},
+		"ws-synapse-0025-WorkspaceDefaultSqlServer_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ws-synapse-0025-WorkspaceDefaultSqlServer'",
+			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:ws-synapse-0025.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"FileServer1_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "C:\\Manikandan\\ADF-PRACTICE"
+		},
+		"FileServer1_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "manikandan.t25@outlook.com"
+		},
+		"LS_Sqldb_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "adfpracticeserver901.database.windows.net"
+		},
+		"LS_Sqldb_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "adfpractice"
+		},
+		"LS_Sqldb_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Manikandan"
+		},
+		"ls_datalake_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://practicestganshlamba001.dfs.core.windows.net/"
+		},
+		"ls_httpjson_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://raw.githubusercontent.com"
+		},
+		"ws-synapse-0025-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://defaultsynapseadlsgen2.dfs.core.windows.net"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "maniadfproject_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_Sqldb_password": {
+						"value": "[parameters('LS_Sqldb_password')]"
+					},
+					"Ls_gen2_connectionString": {
+						"value": "[parameters('Ls_gen2_connectionString')]"
+					},
+					"ls_datalake_accountKey": {
+						"value": "[parameters('ls_datalake_accountKey')]"
+					},
+					"FileServer1_password": {
+						"value": "[parameters('FileServer1_password')]"
+					},
+					"ws-synapse-0025-WorkspaceDefaultSqlServer_connectionString": {
+						"value": "[parameters('ws-synapse-0025-WorkspaceDefaultSqlServer_connectionString')]"
+					},
+					"LS_Sqldb_properties_typeProperties_server": {
+						"value": "[parameters('LS_Sqldb_properties_typeProperties_server')]"
+					},
+					"LS_Sqldb_properties_typeProperties_database": {
+						"value": "[parameters('LS_Sqldb_properties_typeProperties_database')]"
+					},
+					"LS_Sqldb_properties_typeProperties_userName": {
+						"value": "[parameters('LS_Sqldb_properties_typeProperties_userName')]"
+					},
+					"ls_datalake_properties_typeProperties_url": {
+						"value": "[parameters('ls_datalake_properties_typeProperties_url')]"
+					},
+					"ls_httpjson_properties_typeProperties_url": {
+						"value": "[parameters('ls_httpjson_properties_typeProperties_url')]"
+					},
+					"FileServer1_properties_typeProperties_host": {
+						"value": "[parameters('FileServer1_properties_typeProperties_host')]"
+					},
+					"FileServer1_properties_typeProperties_userId": {
+						"value": "[parameters('FileServer1_properties_typeProperties_userId')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "maniadfproject_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ws-synapse-0025-WorkspaceDefaultStorage_properties_typeProperties_url": {
+						"value": "[parameters('ws-synapse-0025-WorkspaceDefaultStorage_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'maniadfproject_ArmTemplate_0')]"
+			]
+		}
+	]
+}

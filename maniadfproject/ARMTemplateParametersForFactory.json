@@ -1,0 +1,48 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "maniadfproject"
+		},
+		"FileServer1_password": {
+			"value": ""
+		},
+		"LS_Sqldb_password": {
+			"value": ""
+		},
+		"Ls_gen2_connectionString": {
+			"value": ""
+		},
+		"ls_datalake_accountKey": {
+			"value": ""
+		},
+		"ws-synapse-0025-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:ws-synapse-0025.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"FileServer1_properties_typeProperties_host": {
+			"value": "C:\\Manikandan\\ADF-PRACTICE"
+		},
+		"FileServer1_properties_typeProperties_userId": {
+			"value": "manikandan.t25@outlook.com"
+		},
+		"LS_Sqldb_properties_typeProperties_server": {
+			"value": "adfpracticeserver901.database.windows.net"
+		},
+		"LS_Sqldb_properties_typeProperties_database": {
+			"value": "adfpractice"
+		},
+		"LS_Sqldb_properties_typeProperties_userName": {
+			"value": "Manikandan"
+		},
+		"ls_datalake_properties_typeProperties_url": {
+			"value": "https://practicestganshlamba001.dfs.core.windows.net/"
+		},
+		"ls_httpjson_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com"
+		},
+		"ws-synapse-0025-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://defaultsynapseadlsgen2.dfs.core.windows.net"
+		}
+	}
+}
