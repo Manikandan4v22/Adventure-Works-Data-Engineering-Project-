@@ -1,0 +1,9 @@
+{
+	"name": "maniadfproject",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "d8be61ce-b29b-4394-82c8-a2d144a347c8",
+		"tenantId": "eeb3ba66-1751-4a19-a2d9-ae5a9c803373"
+	}
+}
