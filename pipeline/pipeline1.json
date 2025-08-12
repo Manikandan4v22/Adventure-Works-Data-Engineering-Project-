@@ -100,7 +100,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@greater(activity('Get Metadata2').output.lastModified,activity('Lookup1').output.value[0]['lastLoadfiledate'])",
+									"value": "@greater(formatDateTime(activity('Get Metadata2').output.lastModified, 'yyyy-MM-ddTHH:mm:ss'),\n         formatDateTime(activity('Lookup1').output.value[0]['lastLoadfiledate'], 'yyyy-MM-ddTHH:mm:ss'))",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
