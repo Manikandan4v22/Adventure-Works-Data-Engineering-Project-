@@ -23,11 +23,6 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'FileServer1'"
 		},
-		"ws-synapse-0025-WorkspaceDefaultSqlServer_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'ws-synapse-0025-WorkspaceDefaultSqlServer'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:ws-synapse-0025.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
-		},
 		"LS_Sqldb_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "adfpracticeserver901.database.windows.net"
@@ -141,6 +136,27 @@
 							"computeType": "General",
 							"coreCount": 8,
 							"timeToLive": 0
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/integrationRuntime1')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "Managed",
+				"typeProperties": {
+					"computeProperties": {
+						"location": "AutoResolve",
+						"dataFlowProperties": {
+							"computeType": "General",
+							"coreCount": 8,
+							"timeToLive": 10,
+							"cleanup": false,
+							"customProperties": []
 						}
 					}
 				}
@@ -501,30 +517,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/integrationRuntimes/maniselfhosted-IR')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ws-synapse-0025-WorkspaceDefaultSqlServer')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"parameters": {
-					"DBName": {
-						"type": "String"
-					}
-				},
-				"annotations": [],
-				"type": "AzureSqlDW",
-				"typeProperties": {
-					"connectionString": "[parameters('ws-synapse-0025-WorkspaceDefaultSqlServer_connectionString')]"
-				},
-				"connectVia": {
-					"referenceName": "AutoResolveIntegrationRuntime",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
 			]
 		}
 	]

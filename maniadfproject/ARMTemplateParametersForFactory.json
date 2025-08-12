@@ -8,10 +8,16 @@
 		"FileServer1_password": {
 			"value": ""
 		},
+		"LSSQL_password": {
+			"value": ""
+		},
 		"LS_Sqldb_password": {
 			"value": ""
 		},
 		"Ls_gen2_connectionString": {
+			"value": ""
+		},
+		"Lsdatalake_accountKey": {
 			"value": ""
 		},
 		"ls_datalake_accountKey": {
@@ -26,6 +32,15 @@
 		"FileServer1_properties_typeProperties_userId": {
 			"value": "manikandan.t25@outlook.com"
 		},
+		"LSSQL_properties_typeProperties_server": {
+			"value": "adfpracticeserver901.database.windows.net"
+		},
+		"LSSQL_properties_typeProperties_database": {
+			"value": "adfpractice"
+		},
+		"LSSQL_properties_typeProperties_userName": {
+			"value": "Manikandan"
+		},
 		"LS_Sqldb_properties_typeProperties_server": {
 			"value": "adfpracticeserver901.database.windows.net"
 		},
@@ -34,6 +49,9 @@
 		},
 		"LS_Sqldb_properties_typeProperties_userName": {
 			"value": "Manikandan"
+		},
+		"Lsdatalake_properties_typeProperties_url": {
+			"value": "https://stgdatabricks002.dfs.core.windows.net/"
 		},
 		"ls_datalake_properties_typeProperties_url": {
 			"value": "https://practicestganshlamba001.dfs.core.windows.net/"
